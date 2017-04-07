@@ -1,0 +1,68 @@
+import java.io.IOException;
+import java.io.RandomAccessFile;
+public class Seek
+{
+	public static void main(String[] args)throws Exception
+	{
+		RandomAccessFile rf = new RandomAccessFile("hello.txt", "rw");
+		// 向文件中写数据
+		//file.writeChar(99);//占4个字节
+		//file.writeChar(98);
+		//file.seek(0);//把文件指针设置到文件起始位置
+
+		//从文件中读数据，要注意文件指针的位置
+		//System.out.println("——————从file文件指定位置读数据——————"); 
+		//System.out.println((char)98); 
+		//for(int i=0;i<20;i++){char c =(char)(rf.readByte());
+		//	System.out.println(c);  }
+
+
+		System.out.println("全文共有"+rf.length()+"个字节。");
+		int[] array = new int[128];
+		
+		for (int i=0;i<rf.length() ;i++ ) {
+			int j = rf.readByte();
+			//System.out.println(j); 
+			array[j]++;	
+			
+		}
+		//for(int i=65;i<123;i++){ System.out.println("array["+i+"]:"+array[i]);}
+		int[] array1 = new int[26];
+		int total=0,single=0;int all=0;
+		for(int i=0;i<26;i++){	array1[i]=array[i+65]+array[i+97];if(array1[i]!=0)total++;if(array1[i]==1)single++;}
+		System.out.print("全文中共出现了"+total+"个单词，");
+		System.out.println("其中有"+single+"个单词只出现了一次。");
+		System.out.println("每个单词出现的频率如下：");
+		for(int i=0;i<26;i++){all=all+array1[i];}
+		System.out.println("单词的总数量为："+all);
+		//System.out.println(array1[0]/all);
+		//for(int i=0;i<26;i++){System.out.println((char)(i+97)+":"+(array1[i]/all));}
+		int[] sortedArray =(int[])array1.clone();bubbleSort(sortedArray);
+		//for(int i=0;i<26;i++){System.out.println(array1[i]);}
+		for(int i=0;i<26;i++){
+			for(int j=0;j<26;j++){
+				if(array1[j]==sortedArray[i]&&array1[j]!=-1){
+				char c=(char)(j+97);
+				System.out.println(c+":"+(float)array1[j]/all+"(共"+array1[j]+"个)");
+				array1[j]=-1;}
+}}
+
+	}
+public static void bubbleSort(int[] numbers)
+    {
+        int temp = 0;
+        int size = numbers.length;
+        for(int i = 0 ; i < size-1; i ++)
+        {
+        for(int j = 0 ;j < size-1-i ; j++)
+        {
+            if(numbers[j] < numbers[j+1])  //交换两数位置
+            {
+            temp = numbers[j];
+            numbers[j] = numbers[j+1];
+            numbers[j+1] = temp;
+            }
+        }
+        }
+    }
+}

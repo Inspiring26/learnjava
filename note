@@ -1,0 +1,125 @@
+
+java中的包就是文件系统中的文件夹，
+包（package）
+对文件进行分类管理
+给类提供多层命名空间
+
+包一般放在代码的第一行
+有包以后类的名称就发生了变化
+protected  权限  只有子类才能访问
+
+包与包之间进行访问，被访问的包中的类以及类中的成员，需要public修饰。
+不同包中的子类可以访问父类中被protected权限修饰的成员。
+
+包与包之间使用的权限只有两种
+
+public protected default private
+
+一个.java 里面不能出现两个公有类或者接口，通常情况下是指只能有一个public
+
+还可以多层包目录
+
+导入 import
+用来导入包中的类，不会导入文件夹（子包）
+
+建议不要写统配符 *
+
+当导入不同包中的类出现重名的时候，必须写包名。
+
+建立包名不要重复，可以使用url来完成定义，url是唯一的。
+
+
+jar包
+java的压缩包
+ 方便项目携带
+
+ 后面jar包双击就可以执行
+
+set classpath=c:\myclass\haha.jar
+
+>c:\1.txt
+数据重定向  就是数据换一个地方显示
+
+1.如何在代码中自定义一个线程
+创建线程的第一种方式就是继承Thread类
+
+Thread类用于描述线程。
+该类就定义了一个功能，用于存储线程要运行的代码，该存储功能就是run方法。
+
+Test t1 = new Test("one");
+		Test t2 = new Test("two");
+		t1.start();
+		t2.start();
+
+t1.start()和t1.run() 差别很大，start()有并发性，run()就没有了，只能顺序执行。
+
+ 线程都具有自己的名称 Thread-编号  编号从0开始的
+
+
+要共享一个变量的话，要用静态的，这时候就体现出静态的作用了。
+private static int tick = 100;
+
+线程有实现方式和继承方式
+
+
+字符串的常见操作：
+1.获取
+	1.1包含的字符数，也就是字符串长度
+	int length():获取长度。
+	1.2根据位置获取位置上某个字符。
+	char charAt(int index):
+	1.3 根据字符获取字符在字符串中的位置
+	int indexOf(int ch):返回的是ch在字符串中第一次出现的位置。
+
+
+2.判断
+
+7.转换 去空格
+public static void method_7()
+{
+	String s = "   Hello Java  ";
+	sop(s.toLowerCase());
+	sop(s.toUpperCase());
+	sop(s.trim())
+}
+
+
+StringBuffer是有一个容器，是字符串缓冲区
+
+1.存储
+2.删除
+3.获取
+4.修改
+
+CURD
+
+insert
+
+缓冲区的特点：
+1，长度是可变化的
+2，可以字节操作多个数据类型
+3，最终会通过toString方法变成字符串
+
+
+java将万事万物视为对象
+
+基本数据类型  对象包装类
+
+基本数据类型包装类. parsexxx()
+
+sop(Integer.toBinaryString(-6));
+sop(Integer.toHexString(-6));
+// 就实现数制转换
+
+int x = Integer.parseInt("110",2)
+
+
+List:元素是有序的，元素可以重复
+
+
+
+
+
+
+
+
